@@ -37,15 +37,15 @@ Totoro Images: Replace the Totoro-themed image files with your own images if you
 
 <br>
 
-![Totoro Pomodoro](https://github.com/filosoho/US-States-Game/blob/928371a092391ad53999c74eeb4a31e27d14c638/1.png)   
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/15148fccae5a212f159eca0ada4395e3083453d9/totoro1.png)   
 
-![Totoro Pomodoro](https://github.com/filosoho/US-States-Game/blob/928371a092391ad53999c74eeb4a31e27d14c638/2.png)   
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/15148fccae5a212f159eca0ada4395e3083453d9/totoro2.png)    
 
-![Totoro Pomodoro](https://github.com/filosoho/US-States-Game/blob/928371a092391ad53999c74eeb4a31e27d14c638/3.png)  
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/15148fccae5a212f159eca0ada4395e3083453d9/totoro3.png) 
 
-![Totoro Pomodoro](https://github.com/filosoho/US-States-Game/blob/928371a092391ad53999c74eeb4a31e27d14c638/4.png)  
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/15148fccae5a212f159eca0ada4395e3083453d9/totoro4.png)   
 
-![Totoro Pomodoro](https://github.com/filosoho/US-States-Game/blob/928371a092391ad53999c74eeb4a31e27d14c638/5.png)  
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/15148fccae5a212f159eca0ada4395e3083453d9/totoro5.png)   
 
 <br>
 
