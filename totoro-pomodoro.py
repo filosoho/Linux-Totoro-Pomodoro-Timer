@@ -1,12 +1,8 @@
 from tkinter import *
 import math
 import threading
-from pydub import AudioSegment
-from pydub.playback import play
 from PIL import ImageTk
 from PIL import Image
-from PIL import ImageDraw
-
 import pygame
 
 # Initialize Pygame mixer
@@ -18,17 +14,14 @@ RED = "palevioletred3"
 GREEN = "LightSteelBlue1"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
+
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
-# WORK_MIN = 0.1
-# SHORT_BREAK_MIN = 5
-# LONG_BREAK_MIN = 20
-# work_input =  0.1
-# short_break_input = 5
-# long_break_input = 20
+
 reps = 0
 timer = None
+
 FONT = ("Arial", 13, "normal")
 FONT_TIMER = ("Courier", 50, "bold")
 FONT_CHECK = ("Courier", 16, "bold")
@@ -42,12 +35,11 @@ check_image_counter = 0
 check_images = []
 volume_level = 1.0
 
-is_timer_running = False  # Indicates whether the timer is currently running
+is_timer_running = False
 paused_time = 0
 remaining_time = 0
 
 current_session_type = "work"
-
 
 
 # ---------------------------- TIMER CONTROL ------------------------------- #
@@ -68,14 +60,12 @@ def resume_timer():
         count_down(remaining_time)
 
 
-    # ---------------------------- TIMER RESET ------------------------------- #
-
 def reset_timer_only():
     global timer
     if timer:  # Check if timer has a valid value before cancelling
         window.after_cancel(timer)  # Cancel the existing timer
     canvas.itemconfig(timer_text, text="00:00")  # Reset timer display
-    timer = None  # Reset timer variable to None
+    timer = None
 
 
 def reset_timer():
@@ -85,7 +75,6 @@ def reset_timer():
 
     start_button.config(state=NORMAL)
     resume_timer_button.config(state=DISABLED)
-
 
     # Reset timer running status
     is_timer_running = False
@@ -103,7 +92,6 @@ def reset_timer():
     new_img = Image.open("bg2.png").resize((1280, 555))
     canvas.new_photo = ImageTk.PhotoImage(new_img)
     canvas.itemconfigure(bg_canvas, image=canvas.new_photo)
-
     canvas.coords(timer_text, 328, 380)
     canvas.itemconfigure(timer_text, fill="white")
     canvas.itemconfig(timer_text, text="00:00", font=FONT_RESET)
@@ -117,10 +105,7 @@ def reset_timer():
     t.start()
 
 
-
-# ---------------------------- TIMER MECHANISM ------------------------------- #
-
-
+# ---------------------------- SOUND CONTROLS ------------------------------- #
 def play_sound(sound_file):
     pygame.mixer.music.load(sound_file)
     pygame.mixer.music.set_volume(volume_level)
@@ -136,8 +121,8 @@ def resume_sound():
 def stop_sound():
     pygame.mixer.music.stop()
 
-# ---------------------------- ADD IMAGE CHECK ------------------------------- #
 
+# ---------------------------- ADD IMAGE CHECK ------------------------------- #
 def add_image():
     global x_coordinate, check_images, check_image_counter
     check_img = PhotoImage(file="check-totoro.png").subsample(3)
@@ -149,8 +134,8 @@ def add_image():
     x_coordinate += 30
     return check_image_item
 
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 
+# ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
     global check_image_counter, is_timer_running, remaining_time
 
@@ -177,14 +162,11 @@ def count_down(count):
             check_image_counter = 0
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
-
-
 def start_timer(work_duration):
     global reps, is_timer_running, current_session_type
 
     def work_sound():
         play_sound('work.wav')
-
 
     start_button.config(state=DISABLED)
     resume_timer_button.config(state=NORMAL)
@@ -201,7 +183,6 @@ def start_timer(work_duration):
         short_break_duration = SHORT_BREAK_MIN
         long_break_duration = LONG_BREAK_MIN
 
-
     # If the timer is currently on break, reset and start work session
     if current_session_type in ["short break", "long break", "break", "reset"]:
         reset_timer_only()
@@ -215,7 +196,6 @@ def start_timer(work_duration):
         t = threading.Thread(target=work_sound)
         t.start()
 
-        print(f"Loading work screen")
         new_img = Image.open("bg.png").resize((1280, 555))
         canvas.new_photo = ImageTk.PhotoImage(new_img)
         canvas.itemconfigure(bg_canvas, image=canvas.new_photo)
@@ -255,6 +235,7 @@ def start_timer(work_duration):
 
     return
 
+
 # ---------------------------- BREAK FUNCTIONS ------------------------------- #
 def start_short_break(duration_time):
     global reps, is_timer_running, current_session_type
@@ -292,7 +273,6 @@ def start_break(duration, break_name, color, break_bg_image, totoro_image, font_
     new_img = Image.open(break_bg_image).resize((1280, 555))
     canvas.new_photo = ImageTk.PhotoImage(new_img)
     canvas.itemconfigure(bg_canvas, image=canvas.new_photo)
-
     canvas.coords(timer_text, coords_text_x, coords_text_y)
     canvas.itemconfig(timer_text, fill=color)
     canvas.new_img = PhotoImage(file=totoro_image)
@@ -302,8 +282,8 @@ def start_break(duration, break_name, color, break_bg_image, totoro_image, font_
     canvas.itemconfig(timer_word, text=break_name, fill=color, font=FONT_TIMER)
     canvas.coords(timer_word, coords_word_x, coords_word_y)
 
-# ---------------------------- VOLUME CONTROL ------------------------------- #
 
+# ---------------------------- VOLUME CONTROL ------------------------------- #
 def on_volume_change(val):
     global volume_level
     volume_level = float(val) / 100
@@ -311,7 +291,6 @@ def on_volume_change(val):
 
 
 # ----------------------------- VALID INPUT --------------------------------- #
-
 # Function to get valid input or use default values
 def get_valid_input(input_field, default_value):
     try:
@@ -321,9 +300,9 @@ def get_valid_input(input_field, default_value):
         return int(value)
     except ValueError:  # Catch non-numeric input
         return default_value  # Return the default value if input is invalid
+
+
 # ---------------------------- UI SETUP ------------------------------- #
-
-
 window = Tk()
 window.title("Totoro-Pomodoro")
 window.geometry("1055x755")
@@ -537,20 +516,15 @@ canvas.tag_bind(stop_image, "<Leave>", on_stop_image_leave)
 
 start_img = PhotoImage(file="start-button.png")
 start_img = start_img.subsample(4)
-
 start_button = Button(window, image=start_img, highlightthickness=0, bd=0,   command=lambda: start_timer(get_valid_input(work_input, WORK_MIN)), anchor='n',
                       activebackground="green", bg="yellow green")
-
 start_button_window = canvas.create_window(660, 640, anchor='sw', window=start_button)
 
 reset_img = PhotoImage(file="reset-button.png")
 reset_img = reset_img.subsample(4)
-
 reset_button = Button(image=reset_img, highlightthickness=0, bd=0, command=reset_timer, anchor='n',
                       activebackground="green", bg="yellow green")
-
 reset_button_window = canvas.create_window(935, 640, anchor='se', window=reset_button)
-
 
 
 # Pause Timer Button
@@ -560,7 +534,6 @@ pause_timer_window = canvas.create_window(320, 680, anchor='sw', window=pause_ti
 # Resume Timer Button
 resume_timer_button = Button(window, text="Resume Timer", command=resume_timer, font=("Courier", 12, "bold"), bg="LightSteelBlue1")
 resume_timer_window = canvas.create_window(620, 680, anchor='se', window=resume_timer_button)
-
 
 # Short Break Button
 short_break_button = Button(window, text="Short Break", command=lambda: start_short_break(get_valid_input(short_break_input, SHORT_BREAK_MIN)), font=("Courier", 12, "bold"), bg="LightSteelBlue1")
