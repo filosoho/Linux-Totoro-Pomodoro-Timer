@@ -1,58 +1,124 @@
 # Linux-Totoro-Pomodoro-Timer
-Welcome to Totoro-Pomodoro, a fun and interactive Pomodoro timer for Linux users with a Totoro twist! This application helps you manage your work and break intervals efficiently while enjoying some adorable Totoro images.
 
-# Prerequisites
+A Totoro-themed Pomodoro Timer application built in Python using the
+Tkinter GUI library. This tool follows the Pomodoro technique, helping
+users improve productivity by dividing work into focused sessions with
+breaks in between. Designed specifically for Linux, it features static Totoro-inspired images and custom session management options.
+
+## Features
+
+- **Work and Break Sessions**: Alternate between focused work intervals and short breaks, with visuals updating based on the session type.
+- **Customizable Timer**: Set custom work and break durations, adjusting the timer to fit your preferences.
+- **Threaded Execution for Responsive GUI**:
+Utilizes Python's threading module to keep the interface responsive, preventing blocking operations during countdowns.
+- **Sound and Alerts**: Plays sounds at the start of work or 
+  break session to keep you aware of each transition.
+- **Start, Pause and Resume Options**: Control your Pomodoro timer with intuitive start, pause and resume functions.
+- **Error Handling**: Improved handling for undefined variables and unexpected inputs to ensure smooth functionality.
+- **Totoro Theme**: Uses Totoro-themed images as background visuals during work and break sessions.
+
+## New Features
+
+- **Volume Control**: Volume control is implemented using pygame.mixer for real-time sound management.
+- **Responsive Images**: The background image dynamically updates to match the current session type, either work or break.
+- **Reset and Skip Functions**: Easily reset the timer or skip to the next session as needed.
+
+## Technologies Used
+
+- **Python**: The core programming language used for the logic and functionality of the Pomodoro timer.
+- **Tkinter**: Python’s standard GUI library, used for creating the application's interface and managing user interactions.
+- **Pygame**: Specifically pygame.mixer for sound playback and real-time volume control.
+- **Static Assets (Images and Sounds)**: Totoro-themed images provide a 
+  playful interface, while sound files signal transitions between sessions.
+
+## Prerequisites
+
 Before using Totoro-Pomodoro, ensure you have the following dependencies installed:
 
 ~~~
 Python 3.x
 Tkinter
-pydub
 PIL (Python Imaging Library)
+pygame
 ~~~
 
-# Usage
-Run the main.py file using Python:
+## Installation
+Clone the repository:
+
+~~~bash
+git clone https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer.git
+~~~
+
+Navigate to the project directory:
+
+~~~bash
+cd Linux-Totoro-Pomodoro-Timer
+~~~
+
+Run the totoro-pomodoro.py file using Python:
 
 ~~~
 totoro-pomodoro.py
 ~~~
+The Totoro-Pomodoro application window will appear.
 
-The Totoro-Pomodoro application window will appear.  
-Click the "Start" button to begin a work session. Totoro will help you stay focused!  
-After the work session is complete, you'll be notified to take a break. Enjoy Totoro's company during your break.  
-Repeat the work and break cycles as needed.  
-You can also reset the timer and checkmark animations at any time using the "Reset" button.  
+## Usage
 
-# Customization
-You can customize various aspects of Totoro-Pomodoro to suit your preferences:  
+1. **Start Timer**: Click the Start button to begin a work session.
+2. **Pause/Resume Timer**: Use the Pause and Resume buttons to manage your 
+   session timing.
+3. **Adjust Volume**: Control the volume in real-time during the session.
+4. **Reset Timer**: Click Reset to reset the timer, checkmark animations and 
+   begin 
+   a new cycle.
 
-Work and Break Durations: You can adjust the work and break durations by modifying the WORK_MIN and SHORT_BREAK_MIN constants in the code.  
+## Customization
 
-Sound Notifications: Replace the sound files (work.wav, break.wav, 2.wav) with your preferred audio files to change the notification sounds.  
+You can customize various aspects of Totoro-Pomodoro to suit your preferences:
 
-Totoro Images: Replace the Totoro-themed image files with your own images if you wish to customize the animations.  
+- **Work and Break Durations**: You can adjust the default work and break 
+durations by 
+modifying the WORK_MIN, SHORT_BREAK_MIN and LONG_BREAK_MIN constants in the code.
+
+- **Sound Notifications**: Replace the sound files (work.wav, break.wav, 2.
+  wav) with your preferred audio files to change the notification sounds.
+
+- **Totoro Images**: Replace the Totoro-themed image files with your own 
+  images if you wish to customize the animations.
+
+## Code Highlights
+
+- **Countdown Logic**: The count_down() function handles the countdown 
+  process for both work and break sessions, updating the timer label and managing session transitions.
+
+- **Threading Implementation**: Using the threading.Thread object allows 
+  the countdown to run in a separate thread, keeping the GUI responsive during the timer's operation.
+
+- **Sound Control**: The pygame.mixer is utilized for real-time volume 
+  control, allowing users to adjust the sound alert volume as sessions progress.
 
 # Interface
 
 <br>
 
-![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro1.png)   
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro1.png)
 
-![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro2.png)    
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro2.png)
 
-![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro3.png) 
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro3.png)
 
-![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro4.png)   
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro4.png)
 
-![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro5.png)   
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro5.png)
 
 <br>
 
 # Contributing
+
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
 Fork the repository. Create a new branch for your feature or bug fix. Make your changes and test thoroughly. Create a pull request with a clear description of your changes.
 
 # License
+
 Feel free to use and modify the code as per your requirements.
