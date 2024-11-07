@@ -37,15 +37,15 @@ Totoro Images: Replace the Totoro-themed image files with your own images if you
 
 <br>
 
-![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/15148fccae5a212f159eca0ada4395e3083453d9/totoro1.png)   
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro1.png)   
 
-![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/15148fccae5a212f159eca0ada4395e3083453d9/totoro2.png)    
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro2.png)    
 
-![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/15148fccae5a212f159eca0ada4395e3083453d9/totoro3.png) 
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro3.png) 
 
-![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/15148fccae5a212f159eca0ada4395e3083453d9/totoro4.png)   
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro4.png)   
 
-![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/15148fccae5a212f159eca0ada4395e3083453d9/totoro5.png)   
+![Totoro Pomodoro](https://github.com/filosoho/Linux-Totoro-Pomodoro-Timer/blob/4b1252a1a70717aafe6039558458693c10ff71fd/totoro5.png)   
 
 <br>
 
