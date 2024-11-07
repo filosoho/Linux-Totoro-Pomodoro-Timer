@@ -33,7 +33,7 @@ Utilizes Python's threading module to keep the interface responsive, preventing 
 Before using Totoro-Pomodoro, ensure you have the following dependencies installed:
 
 ~~~
-Python 3.x
+Python 3.10
 Tkinter
 PIL (Python Imaging Library)
 pygame

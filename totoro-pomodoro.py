@@ -1,9 +1,19 @@
+import os
+import sys
 from tkinter import *
 import math
 import threading
 from PIL import ImageTk
 from PIL import Image
 import pygame
+
+# Determine if we’re in a PyInstaller environment
+if getattr(sys, 'frozen', False):
+    # If we are, get the base directory using _MEIPASS
+    base_dir = sys._MEIPASS
+else:
+    # If not, use the script’s directory (for development)
+    base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Initialize Pygame mixer
 pygame.mixer.init()
@@ -85,17 +95,19 @@ def reset_timer():
     canvas.coords(image_item, 328, 275)
 
     def reset_sound():
-        play_sound('2.wav')
+        play_sound(os.path.join(base_dir, "assets", "2.wav"))
 
     window.after_cancel(timer)
 
-    new_img = Image.open("bg2.png").resize((1280, 555))
+    new_img = Image.open(os.path.join(base_dir, "assets","bg2.png")).resize((
+        1280,
+                                                                     555))
     canvas.new_photo = ImageTk.PhotoImage(new_img)
     canvas.itemconfigure(bg_canvas, image=canvas.new_photo)
     canvas.coords(timer_text, 328, 380)
     canvas.itemconfigure(timer_text, fill="white")
     canvas.itemconfig(timer_text, text="00:00", font=FONT_RESET)
-    canvas.new_img = PhotoImage(file="green-totoro.png")
+    canvas.new_img = PhotoImage(file=os.path.join(base_dir, "assets", "green-totoro.png"))
     canvas.itemconfig(image_item, image=canvas.new_img)
     canvas.itemconfig(timer_word, text="Timer", fill=GREEN)
     canvas.coords(timer_word, 650, 135)
@@ -125,7 +137,7 @@ def stop_sound():
 # ---------------------------- ADD IMAGE CHECK ------------------------------- #
 def add_image():
     global x_coordinate, check_images, check_image_counter
-    check_img = PhotoImage(file="check-totoro.png").subsample(3)
+    check_img = PhotoImage(file=os.path.join(base_dir, "assets", "check-totoro.png")).subsample(3)
     check_images.append(check_img)
     check_image_counter += 1
     if check_image_counter > 1:
@@ -166,7 +178,7 @@ def start_timer(work_duration):
     global reps, is_timer_running, current_session_type
 
     def work_sound():
-        play_sound('work.wav')
+        play_sound(os.path.join(base_dir, "assets", "work.wav"))
 
     start_button.config(state=DISABLED)
     resume_timer_button.config(state=NORMAL)
@@ -196,7 +208,7 @@ def start_timer(work_duration):
         t = threading.Thread(target=work_sound)
         t.start()
 
-        new_img = Image.open("bg.png").resize((1280, 555))
+        new_img = Image.open(os.path.join(base_dir, "assets", "bg.png")).resize((1280, 555))
         canvas.new_photo = ImageTk.PhotoImage(new_img)
         canvas.itemconfigure(bg_canvas, image=canvas.new_photo)
 
@@ -204,7 +216,7 @@ def start_timer(work_duration):
         canvas.coords(image_item, 328, 275)
         canvas.coords(timer_text, 328, 400)
         canvas.itemconfig(timer_text, fill="white", font=FONT_TIMER)
-        canvas.new_img = PhotoImage(file="Totoro.png")
+        canvas.new_img = PhotoImage(file=os.path.join(base_dir, "assets", "Totoro.png"))
         canvas.itemconfig(image_item, image=canvas.new_img)
         canvas.itemconfig(timer_word, text="Work", fill=GREEN, font=FONT_TIMER)
         canvas.coords(timer_word, 560, 80)
@@ -243,7 +255,9 @@ def start_short_break(duration_time):
     is_timer_running = False
     current_session_type = "short break"
     duration_time = duration_time * 60
-    start_break(duration_time, "Break", PINK, "short-break-bg.png", "break-totoro.png", FONT_TIMER, 360, 240, 650, 135)
+    (start_break(duration_time, "Break", PINK, os.path.join(base_dir, "assets", "short-break-bg.png"),
+            os.path.join(base_dir, "assets", "break-totoro.png"),
+     FONT_TIMER, 360, 240, 650, 135))
 
 def start_long_break(duration_time):
     global reps, is_timer_running, current_session_type
@@ -251,7 +265,8 @@ def start_long_break(duration_time):
     is_timer_running = False
     current_session_type = "long break"
     duration_time = duration_time  * 60
-    start_break(duration_time, "Break", RED, "long-break-bg.png", "Totoro-break1.png", FONT_LONG_BREAK,375, 320, 750, 120)
+    start_break(duration_time, "Break", RED, os.path.join(base_dir, "assets", "long-break-bg.png"),
+            os.path.join(base_dir, "assets", "Totoro-break1.png"), FONT_LONG_BREAK,375, 320, 750, 120)
 
 def start_break(duration, break_name, color, break_bg_image, totoro_image, font_break, coords_text_x, coords_text_y, coords_word_x, coords_word_y):
     global reps, timer, is_timer_running, current_session_type
@@ -264,7 +279,7 @@ def start_break(duration, break_name, color, break_bg_image, totoro_image, font_
     current_session_type = "break"
 
     def break_sound():
-        play_sound('break.wav')
+        play_sound(os.path.join(base_dir, "assets", "break.wav"))
 
     t = threading.Thread(target=break_sound)
     t.start()
@@ -391,7 +406,7 @@ def setup_duration_inputs():
     window.bind("<Button-1>", remove_focus)
 
 
-bg_image = Image.open("bg1.jpg")
+bg_image = Image.open(os.path.join(base_dir, "assets", "bg1.jpg"))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = Label(image=bg_photo)
@@ -402,18 +417,18 @@ canvas = Canvas(window, width=955, height=650, highlightthickness=0, bd=0)
 
 setup_duration_inputs()
 # Canvas Background Setup
-img1 = (Image.open("check-path.jpg"))
+img1 = Image.open(os.path.join(base_dir, "assets", "check-path.jpg"))
 resized_image1 = img1.resize((1380, 1000))
 new_image1 = ImageTk.PhotoImage(resized_image1)
 bg_bottom_canvas = canvas.create_image(0, -340, anchor=NW, image=new_image1)
 
-img = (Image.open("bg.jpg"))
+img = Image.open(os.path.join(base_dir, "assets", "bg.jpg"))
 resized_image = img.resize((1280, 555))
 new_image = ImageTk.PhotoImage(resized_image)
 bg_canvas = canvas.create_image(0, 0, anchor=NW, image=new_image)
 
 # Totoro Image Setup
-totoro_img = PhotoImage(file="Totoro.png")
+totoro_img = PhotoImage(file=os.path.join(base_dir, "assets", "Totoro.png"))
 image_item = canvas.create_image(328, 275, image=totoro_img)
 canvas.place(x=50, y=50)
 
@@ -457,9 +472,9 @@ def overlay_image(icon, color):
 hover_color = (176, 224, 230, 128)
 
 # Load and scale icons as PIL images
-resume_icon_pil = Image.open("resume_icon.png").resize((50, 50), Image.Resampling.LANCZOS).convert("RGBA")
-pause_icon_pil = Image.open("pause_icon.png").resize((50, 50), Image.Resampling.LANCZOS).convert("RGBA")
-stop_icon_pil = Image.open("stop_icon.png").resize((50, 50), Image.Resampling.LANCZOS).convert("RGBA")
+resume_icon_pil = Image.open(os.path.join(base_dir, "assets", "resume_icon.png")).resize((50, 50), Image.Resampling.LANCZOS).convert("RGBA")
+pause_icon_pil = Image.open(os.path.join(base_dir, "assets", "pause_icon.png")).resize((50, 50), Image.Resampling.LANCZOS).convert("RGBA")
+stop_icon_pil = Image.open(os.path.join(base_dir, "assets", "stop_icon.png")).resize((50, 50), Image.Resampling.LANCZOS).convert("RGBA")
 
 # Convert PIL images to Tkinter-compatible PhotoImage
 resume_icon = ImageTk.PhotoImage(resume_icon_pil)
@@ -514,13 +529,13 @@ canvas.tag_bind(pause_image, "<Leave>", on_pause_image_leave)
 canvas.tag_bind(stop_image, "<Enter>", on_stop_image_enter)
 canvas.tag_bind(stop_image, "<Leave>", on_stop_image_leave)
 
-start_img = PhotoImage(file="start-button.png")
+start_img = PhotoImage(file=os.path.join(base_dir, "assets", "start-button.png"))
 start_img = start_img.subsample(4)
 start_button = Button(window, image=start_img, highlightthickness=0, bd=0,   command=lambda: start_timer(get_valid_input(work_input, WORK_MIN)), anchor='n',
                       activebackground="green", bg="yellow green")
 start_button_window = canvas.create_window(660, 640, anchor='sw', window=start_button)
 
-reset_img = PhotoImage(file="reset-button.png")
+reset_img = PhotoImage(file=os.path.join(base_dir, "assets", "reset-button.png"))
 reset_img = reset_img.subsample(4)
 reset_button = Button(image=reset_img, highlightthickness=0, bd=0, command=reset_timer, anchor='n',
                       activebackground="green", bg="yellow green")
