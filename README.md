@@ -16,9 +16,6 @@ Utilizes Python's threading module to keep the interface responsive, preventing 
 - **Start, Pause and Resume Options**: Control your Pomodoro timer with intuitive start, pause and resume functions.
 - **Error Handling**: Improved handling for undefined variables and unexpected inputs to ensure smooth functionality.
 - **Totoro Theme**: Uses Totoro-themed images as background visuals during work and break sessions.
-
-## New Features
-
 - **Volume Control**: Volume control is implemented using pygame.mixer for real-time sound management.
 - **Responsive Images**: The background image dynamically updates to match the current session type, either work or break.
 - **Reset and Skip Functions**: Easily reset the timer or skip to the next session as needed.
@@ -64,15 +61,16 @@ The Totoro-Pomodoro application window will appear.
 
 ## Usage
 
-1. **Start Timer**: Click the Start button to begin a work session.
-2. **Pause/Resume Timer**: Use the Pause and Resume buttons to manage your 
+1. **Start Timer**: Click the Start button to begin a work session with 
+   default time settings.
+2. **Set Custom Time**: Set custom time using input fields for Work, Short 
+   and Long Break.
+3. **Pause/Resume Timer**: Use the Pause and Resume buttons to manage your 
    session timing.
-3. **Adjust Volume**: Control the volume in real-time during the session.
-4. **Reset Timer**: Click Reset to reset the timer, checkmark animations and 
-   begin 
-   a new cycle.
+4. **Adjust Volume**: Control the volume in real-time during the session.
+5. **Reset Timer**: Click Reset button to reset the timer, checkmark animations and begin a new cycle.
 
-## Customization
+## Customization Code Level
 
 You can customize various aspects of Totoro-Pomodoro to suit your preferences:
 
@@ -117,7 +115,34 @@ modifying the WORK_MIN, SHORT_BREAK_MIN and LONG_BREAK_MIN constants in the code
 
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
-Fork the repository. Create a new branch for your feature or bug fix. Make your changes and test thoroughly. Create a pull request with a clear description of your changes.
+1. Fork the repository. 
+2. Clone your forked repository.
+    ~~~bash
+    git clone https://github.com/your-username/Linux-Totoro-Pomodoro-Timer.git
+    ~~~
+    ~~~bash
+    cd Linux-Totoro-Pomodoro-Timer
+    ~~~
+
+3. Create a new branch for your feature or bug fix.  
+Replace "feature-branch-name" with a descriptive name for your new feature or bug fix.
+    ~~~bash
+    git checkout -b feature-branch-name
+    ~~~
+4. Make your changes and test thoroughly.  
+     After making changes, add and commit them.
+    ~~~bash
+    git add .
+    ~~~
+    ~~~bash
+    git commit -m "Add a clear, concise description of the changes you made"
+    ~~~
+5. Push your branch to your forked repository on GitHub.
+    ~~~bash
+    git push origin feature-branch-name
+    ~~~
+6. Create a pull request with a clear description of your changes.  
+    Go to your repository on GitHub, navigate to your new branch, and click "Pull request."
 
 # License
 
